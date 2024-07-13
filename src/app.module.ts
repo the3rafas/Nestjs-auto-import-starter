@@ -8,6 +8,7 @@ import { env } from 'process';
 import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
 import { IContext } from './libs/types';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -25,6 +26,19 @@ import { IContext } from './libs/types';
           res,
         };
       },
+    }),
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        type: 'postgres',
+        host: env.DB_HOST,
+        port: env.DB_PORT,
+        username: env.DB_USERNAME,
+        password: env.DB_PASSWORD,
+        database: env.DB_NAME,
+        synchronize: env.NODE_ENV !== 'prod' ? true : false,
+        entities: [join(__dirname, '..', 'src/**/*.model.{ts,js}')],
+        logging: env.NODE_ENV === 'dev' ? true : false,
+      }),
     }),
   ],
   controllers: [AppController],

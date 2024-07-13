@@ -4,4 +4,6 @@ declare type ProjectConfigType = Partial<{
   authentication: {
     strategy: 'email' | 'phone' = "email";
   };
-}> & { barnd: string };
+}> & {
+  brand: string,
+};
