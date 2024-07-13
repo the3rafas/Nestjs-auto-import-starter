@@ -4,7 +4,7 @@ export class PhoneProviderStrategy implements IAuthProvider {
   checkExistence(provider: string): boolean {
     return true;
   }
-  deleteDublication(provider: string): boolean {
+  deleteDuplication(provider: string): boolean {
     return true;
   }
   sendVerificationCode(provider: string): boolean {

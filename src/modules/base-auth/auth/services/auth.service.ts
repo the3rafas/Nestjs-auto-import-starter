@@ -5,9 +5,11 @@ import { AuthProvider } from './auth.provider.service';
 export class AuthService {
   constructor(private readonly providerService: AuthProvider) {}
 
-  registerAs() {}
+  registerAs() {
+    
+  }
 
   emailAndPasswordLogin() {}
-  
+
   signOut() {}
 }
